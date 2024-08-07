@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { IconChevronDown, IconChevronUp } from "@tabler/icons-react";
 import UserCardDetail from "./UserCardDetail";
 
-export default function UserCard({ name, imgUrl, address, email }) {
+export default function UserCard({name, imgUrl, address, email}:any) {
   const [isDetailShown, setIsDetailShown] = useState(false);
 
   const userCardOnClick = () => {
@@ -17,10 +17,9 @@ export default function UserCard({ name, imgUrl, address, email }) {
         <img src={imgUrl} width="90px" className="rounded-circle me-4"></img>
         <span className="text-center display-6 me-auto">{name}</span>
 
-        {/* toggle chevron icon accordingly */}
         {isDetailShown ? <IconChevronUp /> : <IconChevronDown />}
       </div>
-      {/* display UserCardDetail accordingly */}
+      {isDetailShown && <UserCardDetail email={email} address={address} />}
     </div>
   );
 }
